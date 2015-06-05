@@ -7,15 +7,7 @@
         
         <!-- Text input-->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="textinput">Employee Name</label>  
-                  <div class="col-md-6">
-                  <input id="fullName" name="fullName" type="text" placeholder="Full Name" class="form-control input-md">
-                  <span class="-block"></span>  
-                  </div>
-                </div>
-                
-                <!-- Text input-->
-                <div class="form-group">
+                  >
                   <label class="col-md-4 control-label" for="textinput">Jira ID</label>  
                   <div class="col-md-6">
                   <input id="jiraId" name="jiraId" type="text" placeholder="Jira ID" class="form-control input-md">
