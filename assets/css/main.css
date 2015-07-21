@@ -23,11 +23,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', end
 
 
 
-/*homepage styles*/
+
 .bg-home-container-1{
     background: url('../img/bg.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+}
+/*padding Classes */
+.padding10{
+    padding: 10px;
+}
+.padding15{
+    padding: 15px;
+}
+.padding20{
+    padding: 20px;
+}
+.padding25{
+    padding: 25px;
 }
