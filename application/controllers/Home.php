@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Home extends CI_Controller {
 	
         	public function index(){
@@ -23,8 +22,15 @@ class Home extends CI_Controller {
                     $email=$this->input->post('email');
                     $password=$this->input->post('password');
                     if($this->User_model->authenticateUser($email,$password)){
-                        
+                        //user has been successfully authenticated
+                        //creating the session
+                        //$this->session->set_userdata('nameSession',$name);
+                        //$this->session->set_userdata('emailSession',$email);
+                        //redirecting to the dashboard
+                        $this->load->helper('url');
+                        redirect(base_url('index.php/dashboard'));
                     }else{
+                        //user doen't exist in the database
                         $data['loginError']="Credentials not valid";
                         $this->load->view('header.php');
                         $this->load->view('home',$data);
@@ -59,9 +65,9 @@ class Home extends CI_Controller {
                         if($this->User_model->createUser($name,$email,$password)){
                             //user successfully created
                             //setting the session variables
-                            $nameSession=$this->session->userdata('nameSession');
-                            $emailSession=$this->session->userdata('emailSession');
-                            $this->load->helper('uri');
+                            $this->session->set_userdata('nameSession',$name);
+                            $this->session->set_userdata('emailSession',$email);
+                            $this->load->helper('url');
                             redirect(base_url('index.php/dashboard'));
                         }
                     }
