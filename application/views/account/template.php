@@ -1,20 +1,22 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Left Section DashBoard Starts -->
-        <div class="col-sm-3" style="border: 1px solid black;padding: 0px;">
-             <div class="well well-sm">Contact</div>
+        <div class="col-sm-2" style="padding: 0px;">
+             <?php $this->load->view('account/menu.php'); ?>             
         </div>
         <!-- Left Section DashBoard Ends   -->
         <!-- Right Section DashBoard Starts -->
-        <div class="col-sm-9">
+        <div class="col-sm-10">
             <div class="row">
                 <!-- Topic Option section ends -->
-                <div class="col-sm-12">
+                <div class="col-sm-12" style="padding: 0px;">
+                    <?php if(isset($menuOptioToLoad)){$this->load->view($menuOptioToLoad);} ?>
                 </div>
                 <!-- Topic Option section ends -->
+                   
                 <!-- each option content start -->
                 <div class="col-sm-12">
-                
+                    <?php if(isset($formToLoad)){$this->load->view($formToLoad);} ?>
                 </div>
                 <!-- each option content start -->
             </div>
