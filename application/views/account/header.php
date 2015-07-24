@@ -8,13 +8,17 @@
     <title>Share Resume</title>
 
     <!-- Bootstrap -->
+    <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min.js"); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-ui.min.js"); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/js/parsley.min.js"); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/js/siteBasedConfigration.js"); ?>"></script>
+    
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/jquery-ui.min.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/jquery-ui.theme.min.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/main.css"); ?>" />
-    <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min.js"); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-ui.min.js"); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

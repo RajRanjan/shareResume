@@ -6,6 +6,11 @@
       <a href="#" class="list-group-item">Education</a>
       <a href="#" class="list-group-item">Work Experience</a>
       <a href="#" class="list-group-item">Basic</a>
+      <a href="#" class="list-group-item">Skills</a>
+      <a href="#" class="list-group-item">Intership</a>
+      <a href="#" class="list-group-item">Certifications</a>
+      <a href="#" class="list-group-item">Jobs</a>
+      <a href="#" class="list-group-item">Languages</a>
     </div>
     <br />
 </div>      
