@@ -2,9 +2,13 @@
 body{
     font-family: 'Cantarell',sans-serif;
     font-size: 1em;
-    background-color: #646464;
+    background-color: #F9F9F9;
 }
-
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
 
 
 /*classes for text display*/
@@ -118,4 +122,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', end
 }
 .padding30{
     padding: 30px;
+}
+/* Basic information display */
+#table-basic-information{
+    
+}
+#table-basic-information tr{
+    
+}
+#table-basic-information tr td{
+    
+    padding-top: 1.4em;
+    padding-bottom: 1.4em;
 }
