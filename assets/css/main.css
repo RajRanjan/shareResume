@@ -1,3 +1,75 @@
+/*Style for the website*/
+body{
+    font-family: 'Cantarell',sans-serif;
+    font-size: 1em;
+    background-color: #646464;
+}
+
+
+
+/*classes for text display*/
+.text-menu-1{
+    font-family: 'Cantarell',sans-serif;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+.text-navbar-header{
+    
+}
+.text-navbar-header-option{
+    font-family: 'Cantarell',sans-serif;
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+
+
+
+/*classes for form */
+.bg-form{
+    background-color: #F3F3F3;
+}
+.border-form{
+    border-radius: 5px;
+}
+.text-form-label{
+    font-family: 'Cantarell',sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+.text-form-input{
+    font-family: 'Cantarell',sans-serif;
+    font-size: 1.7em;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+/*glyphicon size */
+.text-glyphicon-size{
+    font-size: 1em;
+}
+
+
+
+
+
+/*classes for bagground*/
+
+
+
+
+
+
+/*classes for padding*/
+
+
+
+
 .bg-black-md{
     background-color: #454545;
 }
@@ -43,4 +115,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', end
 }
 .padding25{
     padding: 25px;
+}
+.padding30{
+    padding: 30px;
 }

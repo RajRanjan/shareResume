@@ -15,7 +15,7 @@
                 <!-- Topic Option section ends -->
                    
                 <!-- each option content start -->
-                <div class="col-sm-12">
+                <div class="col-sm-9">
                     <?php if(isset($formToLoad)){$this->load->view($formToLoad);} ?>
                 </div>
                 <!-- each option content start -->
