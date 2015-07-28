@@ -10,6 +10,17 @@ class Basic extends CI_Controller {
             $this->load->view('account/template.php',$data);
             $this->load->view('account/footer.php');     
        }
+       public function edit(){
+            if($this->input->post('ajaxRequest')){
+                
+                
+            }else{
+                $data['formToLoad']="account/basic/basicInformationForm.php";
+                $this->load->view('account/header.php');
+                $this->load->view('account/template.php',$data);
+                $this->load->view('account/footer.php');
+            }                 
+       }
     
     
 }
