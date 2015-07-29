@@ -39,42 +39,27 @@ class Home extends CI_Controller {
                 }
             }//login function ends
             public function register(){
-               $this->load->library('form_validation');
-                $this->form_validation->set_rules('name','Name','required');
-                $this->form_validation->set_rules('email','Email Id','required|valid_email');
-                $this->form_validation->set_rules('password','Password','required');
-                $this->form_validation->set_rules('passwordConfirm','Re-Password','required|matches[password]');
-                if($this->form_validation->run()==FALSE){
-                    $this->load->view('header.php');
-                    $this->load->view('home');
-                    $this->load->view('footer');
+                $response=array();
+                if($this->input->post('ajaxRequest')){
+                        $this->load->library('form_validation');
+                        $this->form_validation->set_rules('name','Name','required');
+                        $this->form_validation->set_rules('email','Email Id','required|valid_email');
+                        $this->form_validation->set_rules('password','Password','required');
+                        $this->form_validation->set_rules('password-confirm','Re-Password','required|matches[password]');
+                        if($this->form_validation->run()==FALSE){
+                            $response['errorCode']=10;
+                            $response['errorMessage']=validation_errors();
+                            echo json_encode($response);
+                        } else{
+                            //server based form validation is successful
+                            $this->load->model('User_model');
+                            $result=$this->User_model->register();
+                            echo json_encode($result);
+                        }   
+                         
                 }else{
-                    //if form validation is success
-                    $this->load->model('User_model');//model is loaded
-                    $name=$this->input->post('name');
-                    $email=$this->input->post('email');
-                    $password=$this->input->post('password');
-                    //checking if email is already registered
-                    if($this->User_model->emailExists($email)){
-                        //already user with this email exists
-                        $data['registrationError']="Email address already registered.";
-                        $this->load->view('header.php');
-                        $this->load->view('home',$data);
-                        $this->load->view('footer');
-                    }else{
-                        if($this->User_model->createUser($name,$email,$password)){
-                            //user successfully created
-                            //setting the session variables
-                            $this->session->set_userdata('nameSession',$name);
-                            $this->session->set_userdata('emailSession',$email);
-                            $this->load->helper('url');
-                            redirect(base_url('index.php/dashboard'));
-                        }
-                    }
-                    
-                    
-                    
-                }      
+                        echo "Enable Javascript";
+                }
             }//register function ends
             
             

@@ -1,0 +1,5 @@
+10-----form validation
+5------transaction error
+
+//registration errot starts with 20
+20---user already exits 

@@ -12,7 +12,7 @@ class Basic extends CI_Controller {
        }
        public function edit(){
             if($this->input->post('ajaxRequest')){
-                
+                 $this->load->model('User_model');
                 
             }else{
                 $data['formToLoad']="account/basic/basicInformationForm.php";

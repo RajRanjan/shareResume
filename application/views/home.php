@@ -52,7 +52,7 @@
                         </div>
                         <div role="tabpanel" class="tab-pane padding20" id="register">
                          <!-- Registration Form Start -->
-                            <?= form_open('home/register','id="signUpForm" class="form-horizontal"'); ?>                     
+                            <?= form_open('home/register','id="registrationForm" class="form-horizontal"'); ?>                     
                                      <div class="form-group">
                                           <div class="col-sm-12">
                                              <div class="input-group">
@@ -84,7 +84,7 @@
                                           <div class="col-sm-12">
                                              <div class="input-group">
                                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
-                                               <input class="form-control input-lg" name="passwordConfirm" id="passwordConfirm" placeholder="Re-Password" value="<?= set_value('passwordConfirm');?>" />
+                                               <input class="form-control input-lg" name="password-confirm" id="password-confirm" placeholder="Re-Password" value="<?= set_value('password-confirm');?>" />
                                              
                                              </div>                         
                                           </div>                                     
@@ -98,17 +98,18 @@
                  
                            <?= form_close(); ?>
                          <!-- registration Form Ends  -->
-                           <?php if(isset($registrationError)): ?> 
-                                    <div class="container col-sm-12 text-primary">
-                                         <?= $registrationError; ?>
+                           <?php //if(isset($registrationError)): ?> 
+                                    <div id="userRegistrationError" class="container col-sm-12 text-primary">
+                                         <?php // $registrationError; ?>
                                     </div> 
-                             <?php endif; ?> 
+                             <?php //endif; ?> 
+                             
                         </div>                        
                       </div>
                     </div>
 
                  <!-- Tabs End   -->
-                 <div class="container col-sm-12 text-primary">
+                 <div class="formValidationError" class="container col-sm-12 text-primary">
                     <?= validation_errors(); ?>
                  </div>
             </div>       
@@ -117,3 +118,43 @@
    </div>
 
 </div>
+<script>
+ 
+//ajax functionality on registration submit    
+    $("#registrationForm").on('submit',function(e){
+        e.preventDefault();
+        var errorDisplayDiv=$("#userRegistrationError");
+        errorDisplayDiv.html("");
+        var dataToSend=$(this).serialize();
+        //console.log(dataToSend);
+        $.ajax({
+               url: '<?= base_url('index.php/home/register') ?>',
+               type: 'POST',
+               data:'ajaxRequest=1&'+dataToSend,
+               dataType:'json',
+               success: function(jsonData) {
+                  //console.log(jsonData);
+                  if(jsonData['errorCode']!=0){
+                    errorDisplayDiv.html(jsonData['errorMessage']);
+                  }else if(jsonData['errorCode']==0){
+                    errorDisplayDiv.html(jsonData['errorMessage']);
+                  }
+               },
+               error:function(data){
+                  //console.log(data);
+               },
+               complete:function(data){
+                 // console.log(data);
+               }
+        });//ajax ends
+            
+    })//function ends
+
+
+
+
+
+
+
+
+</script>
