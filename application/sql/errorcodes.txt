@@ -2,4 +2,9 @@
 5------transaction error
 
 //registration errot starts with 20
-20---user already exits 
+20---user already exits
+//login error
+30----user not registerd
+31----invalid credentials i.e email exists but password is wrong
+
+ 

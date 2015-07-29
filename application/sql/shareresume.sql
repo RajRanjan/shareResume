@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2015 at 05:41 PM
+-- Generation Time: Jul 29, 2015 at 02:56 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -44,17 +44,18 @@ CREATE TABLE IF NOT EXISTS `project` (
 CREATE TABLE IF NOT EXISTS `social_links` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `facebook` varchar(150) NOT NULL,
-  `quora` varchar(150) NOT NULL,
-  `linkedin` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `website` int(150) DEFAULT NULL,
+  `facebook` varchar(150) DEFAULT NULL,
+  `quora` varchar(150) DEFAULT NULL,
+  `linkedin` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `social_links`
 --
 
-INSERT INTO `social_links` (`id`, `email`, `facebook`, `quora`, `linkedin`) VALUES
-(1, 'raj.ranjan91956@gmail.com', '', '', '');
+INSERT INTO `social_links` (`id`, `email`, `website`, `facebook`, `quora`, `linkedin`) VALUES
+(3, 'raj.ranjan91956@gmail.com', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -66,20 +67,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `contact_no` int(11) NOT NULL,
-  `birth_date` date NOT NULL,
-  `country` varchar(50) NOT NULL,
+  `contact_no` int(11) DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
   `password` varchar(50) NOT NULL,
-  `create_date` date NOT NULL,
-  `update_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `create_date` date DEFAULT NULL,
+  `update_date` date DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `contact_no`, `birth_date`, `country`, `password`, `create_date`, `update_date`) VALUES
-(5, 'Raj Ranjan', 'raj.ranjan91956@gmail.com', 0, '0000-00-00', '', '956956956', '0000-00-00', '0000-00-00');
+(7, 'Raj ranjan', 'raj.ranjan91956@gmail.com', NULL, NULL, NULL, '956956956', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -116,12 +117,12 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT for table `social_links`
 --
 ALTER TABLE `social_links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

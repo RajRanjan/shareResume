@@ -17,7 +17,7 @@
                       <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active padding20" id="login">
                           <!-- Login Form Starts -->
-                             <?= form_open('home/login','id="signUpForm" class="form-horizontal"'); ?>
+                             <?= form_open('home/login','id="loginForm" class="form-horizontal"'); ?>
                                     <div class="form-group">
                                           <div class="col-sm-12">
                                              <div class="input-group">
@@ -44,11 +44,7 @@
                                       </div>                               
                              <?= form_close(); ?> 
                           <!-- Login Form Ends   -->
-                             <?php if(isset($loginError)): ?> 
-                                    <div class="container col-sm-12 text-primary">
-                                         <?= $loginError; ?>
-                                    </div> 
-                             <?php endif; ?>                   
+                              <div id="loginError" class="container col-sm-12 text-primary"></div>                   
                         </div>
                         <div role="tabpanel" class="tab-pane padding20" id="register">
                          <!-- Registration Form Start -->
@@ -97,13 +93,8 @@
                                       </div>                 
                  
                            <?= form_close(); ?>
-                         <!-- registration Form Ends  -->
-                           <?php //if(isset($registrationError)): ?> 
-                                    <div id="userRegistrationError" class="container col-sm-12 text-primary">
-                                         <?php // $registrationError; ?>
-                                    </div> 
-                             <?php //endif; ?> 
-                             
+                         <!-- registration Form Ends  -->                         
+                           <div id="userRegistrationError" class="container col-sm-12 text-primary"></div>                     
                         </div>                        
                       </div>
                     </div>
@@ -138,6 +129,36 @@
                     errorDisplayDiv.html(jsonData['errorMessage']);
                   }else if(jsonData['errorCode']==0){
                     errorDisplayDiv.html(jsonData['errorMessage']);
+                  }
+               },
+               error:function(data){
+                  //console.log(data);
+               },
+               complete:function(data){
+                 // console.log(data);
+               }
+        });//ajax ends
+            
+    })//function ends
+//ajax functionality on login     
+    $("#loginForm").on('submit',function(e){
+        e.preventDefault();
+        var errorDisplayDiv=$("#loginError");
+        errorDisplayDiv.html("");
+        var dataToSend=$(this).serialize();
+        //console.log(dataToSend);
+        $.ajax({
+               url: '<?= base_url('index.php/home/login') ?>',
+               type: 'POST',
+               data:'ajaxRequest=1&'+dataToSend,
+               dataType:'json',
+               success: function(jsonData) {
+                  console.log(jsonData);                  
+                  if(jsonData['errorCode']!=0){
+                    errorDisplayDiv.html(jsonData['errorMessage']);
+                  }else if(jsonData['errorCode']==0){
+                    errorDisplayDiv.html(jsonData['errorMessage']);
+                    window.location="<?= base_url('index.php/dashboard'); ?>"
                   }
                },
                error:function(data){

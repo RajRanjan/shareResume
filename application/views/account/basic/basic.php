@@ -1,5 +1,6 @@
+<?php if(isset($currentUserBasicInformation)): ?>
+<?php $resultObj=$currentUserBasicInformation[0]; ?>
 <div class="" style="">
-
     <div class="row">
            <!-- Left pane of basic information page starts -->
            <div class="col-sm-4 border">
@@ -27,15 +28,15 @@
            <div class="col-sm-8">
                  <div style="margin-top: 2em;">
                     <table class="table" id="table-basic-information">
-                        <tr class=""><td class="text-right text-menu-1">Name</td><td class="text-left text-navbar-header-option">Raj Ranjan</td></tr>
-                        <tr><td class="text-right text-menu-1">Email</td><td class="text-left text-navbar-header-option">raj.ranjan91956@gmail.com</td></tr>
-                        <tr><td class="text-right text-menu-1">Contact No</td><td class="text-left text-navbar-header-option">+917738428573</td></tr>
-                        <tr><td class="text-right text-menu-1">Birth Date</td><td class="text-left text-navbar-header-option">16 Feb 1992</td></tr>
-                        <tr><td class="text-right text-menu-1">Country</td><td class="text-left text-navbar-header-option">India</td></tr>
-                        <tr><td class="text-right text-menu-1">Website</td><td class="text-left text-navbar-header-option">http://www.rajranjan.com</td></tr>
-                        <tr><td class="text-right text-menu-1">Facebook</td><td class="text-left text-navbar-header-option">http://www.facebook.com/rajranjan</td></tr>
-                        <tr><td class="text-right text-menu-1">LinkedIn</td><td class="text-left text-navbar-header-option">http://www.linkedin.com/rajranjan</td></tr>
-                        <tr><td class="text-right text-menu-1">Quora</td><td class="text-left text-navbar-header-option">http://www.quora.com/rajranjan</td></tr>
+                        <tr class=""><td class="text-right text-menu-1">Name</td><td class="text-left text-navbar-header-option"><?=  ($resultObj->name==NULL)?"Not Available":$resultObj->name ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">Email</td><td class="text-left text-navbar-header-option"><?= ($resultObj->email==NULL)?"Not Available":$resultObj->email ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">Contact No</td><td class="text-left text-navbar-header-option"><?= ($resultObj->contact_no==NULL)?"Not Available":$resultObj->contact_no ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">Birth Date</td><td class="text-left text-navbar-header-option"><?= ($resultObj->birth_date==NULL)?"Not Available":$resultObj->birth_date ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">Country</td><td class="text-left text-navbar-header-option"><?= ($resultObj->country==NULL)?"Not Available":$resultObj->country ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">Website</td><td class="text-left text-navbar-header-option"><?= ($resultObj->website==NULL)?"Not Available":$resultObj->website ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">Facebook</td><td class="text-left text-navbar-header-option"><?= ($resultObj->facebook==NULL)?"Not Available":$resultObj->facebook ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">LinkedIn</td><td class="text-left text-navbar-header-option"><?= ($resultObj->linkedin==NULL)?"Not Available":$resultObj->linkedin ; ?></td></tr>
+                        <tr><td class="text-right text-menu-1">Quora</td><td class="text-left text-navbar-header-option"><?= ($resultObj->quora==NULL)?"Not Available":$resultObj->quora ; ?></td></tr>
                     </table>                 
                  </div>                       
            </div>
@@ -48,3 +49,4 @@
 
 
 </div>
+<?php endif; ?>

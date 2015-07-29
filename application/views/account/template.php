@@ -17,7 +17,7 @@
                 <!-- each option content start -->
                 <div class="col-sm-9">
                     <?php if(isset($formToLoad)){$this->load->view($formToLoad);} ?>
-                    <?php if(isset($informationPageToLoad)){$this->load->view($informationPageToLoad);} ?>
+                    <?php if(isset($pageToLoad)){$this->load->view($pageToLoad);} ?>
                 </div>
                 <!-- each option content start -->
             </div>

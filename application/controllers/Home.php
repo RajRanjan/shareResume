@@ -9,34 +9,30 @@ class Home extends CI_Controller {
                     $this->load->view('footer');                
         	}//index function ends
             public function login(){
-                $this->load->library('form_validation');
-                $this->form_validation->set_rules('email','Email Id','required|valid_email');
-                $this->form_validation->set_rules('password','Password','required');
-                if($this->form_validation->run()==FALSE){
-                    $this->load->view('header.php');
-                    $this->load->view('home');
-                    $this->load->view('footer');
-                }else{
-                    //if form validation is success
-                    $this->load->model('User_model');
-                    $email=$this->input->post('email');
-                    $password=$this->input->post('password');
-                    if($this->User_model->authenticateUser($email,$password)){
-                        //user has been successfully authenticated
-                        //creating the session
-                        //$this->session->set_userdata('nameSession',$name);
-                        //$this->session->set_userdata('emailSession',$email);
-                        //redirecting to the dashboard
-                        $this->load->helper('url');
-                        redirect(base_url('index.php/dashboard'));
+                    $response=array();
+                    if($this->input->post('ajaxRequest')){
+                            $this->load->library('form_validation');
+                            $this->form_validation->set_rules('email','Email Id','required|valid_email');
+                            $this->form_validation->set_rules('password','Password','required');
+                            if($this->form_validation->run()==FALSE){
+                                $response['errorCode']=10;
+                                $response['errorMessage']=validation_errors();
+                                echo json_encode($response);
+                            } else{
+                                //server based form validation is successful
+                                $this->load->model('User_model');
+                                $result=$this->User_model->authenticateUser();
+                                 //now checking result from model and if errorcode is zero then creating session and redirection
+                                if($result['errorCode']==0){
+                                    $this->session->set_userdata('email',$this->input->post('email'));
+                                    $this->session->set_userdata('isLoggedIn',true);                                   
+                                }
+                                echo json_encode($result);
+                            }   
+                             
                     }else{
-                        //user doen't exist in the database
-                        $data['loginError']="Credentials not valid";
-                        $this->load->view('header.php');
-                        $this->load->view('home',$data);
-                        $this->load->view('footer');
-                    }
-                }
+                            echo "Enable Javascript";
+                    }        
             }//login function ends
             public function register(){
                 $response=array();

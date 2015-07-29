@@ -10,10 +10,27 @@ class User_model extends CI_Model {
                     parent::__construct();
                     $this->load->database();
              }
-             public function authenticateUser($email,$password){
-                   $query=$this->db->query("SELECT email,password FROM user WHERE email='{$email}' AND password='{$password}'");
-                   if($query->num_rows()>0){return true;}else{return FALSE;}                 
-                   
+             public function authenticateUser(){
+                   $email=$this->input->post('email');
+                   $password=$this->input->post('password');
+                   //first we need to see if user is registered or not
+                   if($this->emailExists($email)){
+                         $query=$this->db->query("SELECT email,password FROM user WHERE email='{$email}' AND password='{$password}'");
+                           if($query->num_rows()>0){
+                                $this->response['errorCode']=0;
+                                $this->response['errorMessage']="Login Successful.";
+                                return $this->response;
+                           }else{
+                                //if email id doen't exits
+                                $this->response['errorCode']=31;
+                                $this->response['errorMessage']="Invalid Credentials.";
+                                return $this->response;
+                           }  
+                   }else{
+                         $this->response['errorCode']=30;
+                         $this->response['errorMessage']="You are not registered.";
+                         return $this->response;                   
+                   }       
              }
              public function emailExists($email){
                    $query=$this->db->query("SELECT email FROM user WHERE email='{$email}'");
@@ -38,7 +55,7 @@ class User_model extends CI_Model {
                         if($this->db->trans_status()==FALSE){
                             //if transaction is unsuccessful
                             $response['errorCode']=5;
-                            $response['errorMessage']="Some error occured";
+                            $response['errorMessage']="Some error occured.";
                             return $response;
                         }else{
                             //if transaction is successful returning response
@@ -47,6 +64,13 @@ class User_model extends CI_Model {
                             return $response;
                         }                    
                     }
+             }
+             public function getBasicInformation(){
+                    
+                    $currentUserEmail=$this->session->userdata('email');
+                    $query=$this->db->query("SELECT * FROM user INNER JOIN social_links ON user.email=social_links.email WHERE user.email='{$currentUserEmail}' ");
+                    return $query->result();
+                    
              }
              
 
