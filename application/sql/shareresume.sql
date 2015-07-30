@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2015 at 02:56 PM
+-- Generation Time: Jul 30, 2015 at 05:25 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `project` (
 CREATE TABLE IF NOT EXISTS `social_links` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `website` int(150) DEFAULT NULL,
+  `website` varchar(150) DEFAULT NULL,
   `facebook` varchar(150) DEFAULT NULL,
   `quora` varchar(150) DEFAULT NULL,
   `linkedin` varchar(150) DEFAULT NULL
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `social_links` (
 --
 
 INSERT INTO `social_links` (`id`, `email`, `website`, `facebook`, `quora`, `linkedin`) VALUES
-(3, 'raj.ranjan91956@gmail.com', NULL, NULL, NULL, NULL);
+(3, 'raj.ranjan91956@gmail.com', '', 'www.facebook.com/rajranjan', 'www.quora.com/rajranjan1', 'www.linkedin.com/rajranjan');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `contact_no` int(11) DEFAULT NULL,
+  `contact_no` varchar(11) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
   `country` varchar(50) DEFAULT NULL,
   `password` varchar(50) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `contact_no`, `birth_date`, `country`, `password`, `create_date`, `update_date`) VALUES
-(7, 'Raj ranjan', 'raj.ranjan91956@gmail.com', NULL, NULL, NULL, '956956956', NULL, NULL);
+(7, 'Raj ranjan', 'raj.ranjan91956@gmail.com', '7738428573', '1992-02-16', 'india', '956956956', NULL, NULL);
 
 --
 -- Indexes for dumped tables

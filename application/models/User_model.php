@@ -65,11 +65,40 @@ class User_model extends CI_Model {
                         }                    
                     }
              }
+             public function updateBasicInformation(){
+                    $userTableData=array();
+                    $userTableData['contact_no']=$this->input->post('contact_no');
+                    $dateSqlFormat=databaseDateFormat(strtotime($this->input->post('birth_date')));
+                    //echo $dateSqlFormat;
+                    $userTableData['birth_date']=$dateSqlFormat;
+                    $userTableData['country']=$this->input->post('country');
+                    $socialLinkTableData=array();
+                    $socialLinkTableData['website']=$this->input->post('website');
+                    $socialLinkTableData['facebook']=$this->input->post('facebook');
+                    $socialLinkTableData['quora']=$this->input->post('quora');
+                    $socialLinkTableData['linkedin']=$this->input->post('linkedin');
+                    $this->db->trans_start();
+                     $this->db->update('user',$userTableData,array('email'=>$this->session->userdata('email')));
+                     $this->db->update('social_links',$socialLinkTableData,array('email'=>$this->session->userdata('email')));
+                    $this->db->trans_complete();
+                    if($this->db->trans_status()==FALSE){
+                            //if transaction is unsuccessful
+                            $response['errorCode']=5;
+                            $response['errorMessage']="Some error occured.";
+                            return $response;
+                        }else{
+                            //if transaction is successful returning response
+                            $response['errorCode']=0;
+                            $response['errorMessage']="Basic Information Update Successful";
+                            return $response;
+                        }   
+                    
+             }
              public function getBasicInformation(){
                     
                     $currentUserEmail=$this->session->userdata('email');
                     $query=$this->db->query("SELECT * FROM user INNER JOIN social_links ON user.email=social_links.email WHERE user.email='{$currentUserEmail}' ");
-                    return $query->result();
+                    return $query->result_array();
                     
              }
              

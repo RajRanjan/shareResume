@@ -10,16 +10,20 @@ class Basic extends CI_Controller {
            
            public function index(){
                 $data['pageToLoad']="account/basic/basic.php";
-                $data['currentUserBasicInformation']=$this->User_model->getBasicInformation();
+                $result=$this->User_model->getBasicInformation();
+                $data['currentUserBasicInformation']=$result[0];
                 $this->load->view('account/header.php');
                 $this->load->view('account/template.php',$data);
                 $this->load->view('account/footer.php');     
            }
            public function edit(){
                 if($this->input->post('ajaxRequest')){
-                     
+                     $result=$this->User_model->updateBasicInformation();
+                     echo json_encode($result);
                     
                 }else{
+                    $result=$this->User_model->getBasicInformation();
+                    $data['formPopulateData']=$result[0];
                     $data['formToLoad']="account/basic/basicInformationForm.php";
                     $this->load->view('account/header.php');
                     $this->load->view('account/template.php',$data);
