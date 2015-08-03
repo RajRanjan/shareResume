@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand text-menu-1" href="#">Projects</a>
+            <a class="navbar-brand text-menu-1" href="#">Address</a>
         </div>
         <div>
             <ul class="nav navbar-nav ">
