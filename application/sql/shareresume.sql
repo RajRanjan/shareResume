@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2015 at 05:25 PM
+-- Generation Time: Aug 03, 2015 at 06:18 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -28,12 +28,27 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `project` (
   `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `skill` int(11) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`id`, `email`, `title`, `description`, `start_date`, `end_date`) VALUES
+(1, 'raj.ranjan91956@gmail.com', 'Alumni Association web portal', 'Alumni portal where people can be in touch with their college mates.\r\nLatest technologies like AJAX, OOP-PHP5, Security features are used.\r\nPublic, Admin and Account area have been built.', '2013-07-01', '2014-12-24'),
+(2, 'raj.ranjan91956@gmail.com', 'The Asylum | Publishing House', 'A friend’s start-up company as a publishing house. CSS3 heading feature\r\nhas been included. The development took only 3 Hours due to urgent\r\nrequirement for his book launch.', '2013-01-01', '2013-02-21'),
+(4, 'raj.ranjan91956@gmail.com', 'Library Management System| College Competition', 'Developed a library management system website in college\r\ncompetition. People can search books available and can issue them.', '2012-04-01', '2012-12-27'),
+(5, 'raj.ranjan91956@gmail.com', 'College Fest Website', 'Tecnoesis a techno management college fest of NIT Silchar. Worked.Worked as\r\na team leader and guided juniors in best possible way.', '2012-07-10', '2013-12-25'),
+(6, 'raj.ranjan91956@gmail.com', 'Rahul Saini Personal Website | AuthorWebsite', 'A personal website of an author with his books review. A blog system\r\nfor the author. Email contact system was integrated.', '2012-07-08', '2012-07-25'),
+(7, 'raj.ranjan91956@gmail.com', 'Manila Expat Services Network | Internship', 'Worked as a PHP developer for conndignsolutions to develop the server\r\nside of service providing website.\r\nWorked with foreign clients.', '2012-07-01', '2012-07-31'),
+(8, 'raj.ranjan91956@gmail.com', 'Line Follower Robot', 'An infrared operated robot which can sense black and white surface and\r\ntake appropriate decision by doing calculations in AVRmicrocontroller.\r\nLearned about Architecture of At mega 32, Light sensors, Voltage\r\nRegulators and other Integrated circuits.Worked on Programmers\r\nNotepad and AVR Studio.', '2010-01-01', '2010-01-29'),
+(9, 'raj.ranjan91956@gmail.com', 'Alumni Association web portal', 'Alumni portal where people can be in touch with their college mates.\r\nLatest technologies like AJAX, OOP-PHP5, Security features are used.\r\nPublic, Admin and Account area have been built.', '2013-07-01', '2014-12-24'),
+(10, 'raj.ranjan91956@gmail.com', 'Cell phone Operated Robot', 'A cell phone dials a number of a mobile which is attached to the robot\r\nand the robot can be controlled by pressing keypad on the cell phone\r\nWorked on the DTMF Signals and DTMF decoderMT8870.', '2012-07-10', '2012-07-27');
 
 -- --------------------------------------------------------
 
@@ -55,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `social_links` (
 --
 
 INSERT INTO `social_links` (`id`, `email`, `website`, `facebook`, `quora`, `linkedin`) VALUES
-(3, 'raj.ranjan91956@gmail.com', '', 'www.facebook.com/rajranjan', 'www.quora.com/rajranjan1', 'www.linkedin.com/rajranjan');
+(3, 'raj.ranjan91956@gmail.com', '', 'www.facebook.com/rajranjan', '', 'www.linkedin.com/rajranjan');
 
 -- --------------------------------------------------------
 
@@ -112,7 +127,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `social_links`
 --
